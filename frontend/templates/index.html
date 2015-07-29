@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+	<title>FrontEnd</title>
+	<script src="{% static "js/home.js" %}"></script>
+</head>
+
+<body>
+
+	{% if profiles %}
+
+	<ul>
+		{% for pro in profiles %}
+		<li>{{ pro.name }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<strong>There are no Profiles</strong>
+
+	{% endif %}
+	<li><a href="{% url 'about' %}">About</a></li>
+	<a href="{% url 'register'%}">Register Here</a>
+	<a href="/frontend/login/">Login</a>
+
+
+	{% if user.is_authenticated %}
+	<h1>Rango says... hello {{ user.username }}!</h1>
+	<a href="/frontend/logout/">Log Out</a>
+	{% else %}
+	<h1>Rango says... hello world!</h1>
+	{% endif %}
+
+
+
+</body>
+
+</html>
